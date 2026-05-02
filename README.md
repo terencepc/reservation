@@ -104,6 +104,64 @@ npm start
 
 ---
 
+## Frontend Setup
+
+The React web UI lives in `reservation-frontend/` and provides:
+
+- Admin login
+- Available tables page
+- Stable `id` and `data-testid` hooks for Playwright
+- Modular structure with centralized page object selectors
+
+### Installation
+
+```bash
+cd reservation-frontend
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file in `reservation-frontend/`:
+
+```env
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+### Start the Frontend
+
+```bash
+npm run dev
+# Vite will print the local URL, usually http://localhost:5173
+```
+
+### Build for Deployment
+
+```bash
+npm run build
+```
+
+The build output is generated in `reservation-frontend/dist/`, which is ready to deploy from GitHub-based pipelines or any static hosting setup.
+
+### Frontend Structure
+
+```text
+reservation-frontend/
+├── src/
+│   ├── app/                # App shell and auth gate
+│   ├── components/         # Reusable UI and layout components
+│   ├── constants/          # API config and test IDs
+│   ├── hooks/              # Shared state helpers
+│   ├── pageObjects/        # Centralized selectors for UI automation
+│   ├── pages/
+│   │   ├── Login/          # Login page + form logic
+│   │   └── Tables/         # Tables page + data loading logic
+│   ├── services/           # API and local storage access
+│   └── styles/             # Global styles
+```
+
+---
+
 ## API Reference
 
 ### Auth
